@@ -1,16 +1,20 @@
+import { Routes, Route } from 'react-router-dom';
+// import { lazy, Suspense } from 'react';
+// import css from './app.module.css';
+import Header from './Header/Header';
+import Home from '../pages/Home';
+import MovieDetails from './MovieDetails/MovieDetails';
+
 export const App = () => {
   return (
-    <div
-      style={{
-        height: '100vh',
-        display: 'flex',
-        justifyContent: 'center',
-        alignItems: 'center',
-        fontSize: 40,
-        color: '#010101'
-      }}
-    >
-      React homework template
+    <div>
+      <Header />
+      <Routes>
+        <Route path="/" element={<Home />}></Route>
+        <Route path="/movies">
+          <Route path=":filmId" element={<MovieDetails />} />
+        </Route>
+      </Routes>
     </div>
   );
 };

@@ -1,0 +1,15 @@
+.title {
+  font-size: large;
+  letter-spacing: 5px;
+  text-align: center;
+}
+
+.list {
+  margin-bottom: 8px;
+}
+
+.ul {
+  text-align: center;
+  background-color: hsl(271, 76%, 53%, 30%);
+  padding: 20px;
+}
