@@ -1,21 +1,16 @@
 import { Link } from 'react-router-dom';
-import apiReesult from '../api';
+import { apiReesult } from 'api';
 import React, { useState, useEffect } from 'react';
 import css from './home.module.css';
 const Home = () => {
   const [arr, setArr] = useState([]);
 
   useEffect(() => {
-    const api = () => {
-      apiReesult('trending/all/day')
-        .then(response => response.json())
-        .then(response => setArr(response.results))
-        .catch(err => console.error(err));
-    };
-    api();
-  }, [setArr]);
-
-  console.log(arr);
+    apiReesult()
+      .then(response => response.json())
+      .then(response => setArr(response.results))
+      .catch(err => console.error(err));
+  }, []);
 
   return (
     <div>

@@ -4,6 +4,7 @@ import { Routes, Route } from 'react-router-dom';
 import Header from './Header/Header';
 import Home from '../pages/Home';
 import MovieDetails from './MovieDetails/MovieDetails';
+import SearchMovies from './SearchMovies/SearchMovies';
 
 export const App = () => {
   return (
@@ -12,6 +13,7 @@ export const App = () => {
       <Routes>
         <Route path="/" element={<Home />}></Route>
         <Route path="/movies">
+          <Route path="" element={<SearchMovies />} />
           <Route path=":filmId" element={<MovieDetails />} />
         </Route>
       </Routes>
