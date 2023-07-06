@@ -1,0 +1,14 @@
+.flex {
+  margin-top: 10px;
+  padding: 20px;
+  border-bottom: 1px solid rgb(233, 55, 91);
+  display: flex;
+}
+
+.text {
+  margin-left: 20px;
+}
+
+.moreInfo {
+  padding: 20px;
+}

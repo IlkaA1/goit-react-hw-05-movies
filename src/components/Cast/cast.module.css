@@ -1,0 +1,14 @@
+.acter {
+  padding: 20px;
+
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+}
+
+.acterCards {
+  border: 1px solid cadetblue;
+  width: 300px;
+  padding: 5px;
+  text-align: center;
+}

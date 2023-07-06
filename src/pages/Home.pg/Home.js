@@ -2,14 +2,22 @@ import { Link } from 'react-router-dom';
 import { apiReesult } from 'api';
 import React, { useState, useEffect } from 'react';
 import css from './home.module.css';
+import Notiflix from 'notiflix';
 const Home = () => {
   const [arr, setArr] = useState([]);
 
   useEffect(() => {
-    apiReesult()
-      .then(response => response.json())
-      .then(response => setArr(response.results))
-      .catch(err => console.error(err));
+    const fetchApi = async () => {
+      try {
+        await apiReesult().then(res => {
+          setArr(res.data.results);
+        });
+      } catch ({ error }) {
+        Notiflix.Notify.failure(error);
+      }
+    };
+
+    fetchApi();
   }, []);
 
   return (
