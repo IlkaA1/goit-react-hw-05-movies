@@ -1,7 +1,14 @@
 import SearchMovies from 'components/SearchMovies/SearchMovies';
+// import css from './movies.module.css';
 
 const Movies = () => {
-  return <SearchMovies></SearchMovies>;
+  return (
+    <>
+      <div>
+        <SearchMovies />
+      </div>
+    </>
+  );
 };
 
 export default Movies;

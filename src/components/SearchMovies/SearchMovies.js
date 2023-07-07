@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useSearchParams, Link } from 'react-router-dom';
 import { fetchSearchFilm } from 'api';
+import css from './searchMovies.module.css';
 import Notiflix from 'notiflix';
 
 const SearchMovies = () => {
@@ -34,6 +35,9 @@ const SearchMovies = () => {
   const handleSubmit = e => {
     e.preventDefault();
     const form = e.target.film.value;
+    if (!form) {
+      return Notiflix.Notify.failure('Please fill in the search field');
+    }
     setSearchParams({ query: form });
     setSearch(form);
 
@@ -42,12 +46,14 @@ const SearchMovies = () => {
 
   return (
     <>
-      <form onSubmit={handleSubmit}>
-        <input type="text" name="film" />
-        <button type="submit">Search</button>
+      <form onSubmit={handleSubmit} className={css.bg}>
+        <input type="text" name="film" className={css.input} />
+        <button type="submit" className={css.button}>
+          Search
+        </button>
       </form>
       {detailsFilm && (
-        <ul>
+        <ul className={css.list}>
           {detailsFilm.map(film => (
             <li key={film.id}>
               <Link to={`/movies/${film.id}`}>{film.name || film.title}</Link>

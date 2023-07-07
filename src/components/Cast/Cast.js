@@ -25,7 +25,7 @@ const Cast = () => {
   }, [filmId]);
 
   return (
-    <div>
+    <div className={css.ulContainer}>
       {casts && (
         <ul className={css.acter}>
           {casts.map(cast => (
