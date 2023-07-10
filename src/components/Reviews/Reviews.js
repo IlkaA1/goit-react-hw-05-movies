@@ -1,6 +1,6 @@
 import { useParams } from 'react-router-dom';
 import { useEffect, useState } from 'react';
-import { fetchReviews } from 'api';
+import { fetchCastOrReviews } from 'api';
 import css from './reviews.module.css';
 import Notiflix from 'notiflix';
 
@@ -11,7 +11,7 @@ const Reviews = () => {
   useEffect(() => {
     const fetchApi = async filmId => {
       try {
-        await fetchReviews(filmId).then(res => {
+        await fetchCastOrReviews(filmId, 'reviews').then(res => {
           if (res.data.results.length > 0) {
             setReviews(res.data.results);
           }

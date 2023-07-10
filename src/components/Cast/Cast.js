@@ -1,6 +1,6 @@
 import { useParams } from 'react-router-dom';
 import { useEffect, useState } from 'react';
-import { fetchCast } from 'api';
+import { fetchCastOrReviews } from 'api';
 import css from './cast.module.css';
 import Notiflix from 'notiflix';
 
@@ -11,7 +11,7 @@ const Cast = () => {
   useEffect(() => {
     const fetchApi = async filmId => {
       try {
-        await fetchCast(filmId).then(res => {
+        await fetchCastOrReviews(filmId, 'credits').then(res => {
           setCast(res.data.cast);
         });
       } catch ({ error }) {

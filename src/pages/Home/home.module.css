@@ -1,3 +1,7 @@
+body {
+  background-color: hsl(271, 76%, 53%, 30%);
+}
+
 .title {
   font-size: large;
   letter-spacing: 5px;

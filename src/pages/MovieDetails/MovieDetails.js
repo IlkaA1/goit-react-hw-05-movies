@@ -1,5 +1,5 @@
-import { useParams } from 'react-router-dom';
-import { useEffect, useState } from 'react';
+import { useParams, useLocation } from 'react-router-dom';
+import { useEffect, useState, useRef } from 'react';
 import { fetchArticlesWithQuery } from 'api';
 import { Link, Outlet } from 'react-router-dom';
 import { BackLink } from 'components/BackLink/BackLink';
@@ -10,6 +10,11 @@ import css from './movieDetails.module.css';
 const MovieDetails = () => {
   const [film, setFilm] = useState();
   const { filmId } = useParams();
+
+  const location = useLocation();
+
+  const backLinkHref = location.state?.from ?? '/movies';
+  const ref = useRef(backLinkHref);
 
   useEffect(() => {
     const fetchApi = async filmId => {
@@ -31,7 +36,7 @@ const MovieDetails = () => {
     <div>
       {film && (
         <>
-          <BackLink />
+          <BackLink to={ref.current} />
           <div className={css.flex}>
             <img
               width="200"
@@ -55,10 +60,14 @@ const MovieDetails = () => {
         <p>Additional information</p>
         <ul>
           <li>
-            <Link to="credits">Cast</Link>
+            <Link to="credits" state={{ from: location }}>
+              Cast
+            </Link>
           </li>
           <li>
-            <Link to="reviews">Reviews</Link>
+            <Link to="reviews" state={{ from: location }}>
+              Reviews
+            </Link>
           </li>
         </ul>
       </div>

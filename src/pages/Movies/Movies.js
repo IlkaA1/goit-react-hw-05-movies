@@ -1,10 +1,12 @@
 import { useEffect, useState } from 'react';
-import { useSearchParams, Link } from 'react-router-dom';
+import { useSearchParams } from 'react-router-dom';
 import { fetchSearchFilm } from 'api';
-import css from './searchMovies.module.css';
-import Notiflix from 'notiflix';
 
-const SearchMovies = () => {
+import Notiflix from 'notiflix';
+import css from './movies.module.css';
+import ListMovies from 'components/ListMovies/ListMovies';
+
+const Movies = () => {
   const [search, setSearch] = useState(null);
   const [detailsFilm, setDetailsFilm] = useState();
   const [searchParams, setSearchParams] = useSearchParams();
@@ -52,17 +54,10 @@ const SearchMovies = () => {
           Search
         </button>
       </form>
-      {detailsFilm && (
-        <ul className={css.list}>
-          {detailsFilm.map(film => (
-            <li key={film.id}>
-              <Link to={`/movies/${film.id}`}>{film.name || film.title}</Link>
-            </li>
-          ))}
-        </ul>
-      )}
+
+      <ListMovies detailsFilm={detailsFilm} />
     </>
   );
 };
 
-export default SearchMovies;
+export default Movies;
