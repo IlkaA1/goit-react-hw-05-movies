@@ -1,4 +1,4 @@
-import { Routes, Route } from 'react-router-dom';
+import { Routes, Route, Navigate } from 'react-router-dom';
 import { lazy, Suspense } from 'react';
 
 import Header from './Header/Header';
@@ -22,7 +22,7 @@ export const App = () => {
             <Route path="credits" element={<Cast />} />
             <Route path="reviews" element={<Reviews />} />
           </Route>
-          <Route path="*" element={<Home />} />
+          <Route path="*" element={<Navigate to="/" />} />
         </Routes>
       </Suspense>
     </div>
